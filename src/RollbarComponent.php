@@ -32,11 +32,25 @@ class RollbarComponent extends \yii\base\Object
                 'max_errno' => $this->maxErrno,
                 'base_api_url' => $this->baseApiUrl,
                 'root' => !empty($this->rootAlias) ? \Yii::getAlias($this->rootAlias) : '',
-            ],
-            false,
-            false
-        );
+				'person' => $this->getPersonInfo()
+			],
+			false,
+			false
+		);
 
-        parent::init();
-    }
+		parent::init();
+	}
+
+	private function getPersonInfo()
+	{
+		$person_data = null;
+		if (\Yii::$app->user && !\Yii::$app->user->isGuest) {
+			$person_data = [
+				'id' => \Yii::$app->user->id,
+				'username' => \Yii::$app->user->identity->username,
+				'email'   => \Yii::$app->user->identity->email,
+			];
+		}
+		return $person_data;
+	}
 }
