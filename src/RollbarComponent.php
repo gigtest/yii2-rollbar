@@ -1,6 +1,6 @@
 <?php
 
-namespace ladamalina\yii2_rollbar;
+namespace accessd\yii2_rollbar;
 
 class RollbarComponent extends \yii\base\Object
 {

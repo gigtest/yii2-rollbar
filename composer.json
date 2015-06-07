@@ -1,23 +1,23 @@
 {
-    "name": "ladamalina/yii2-rollbar",
+    "name": "accessd/yii2-rollbar",
     "description": "Rollbar Yii2 Error Handler",
     "keywords": ["rollbar", "ratchetio", "ratchet.io", "yii2", "error", "exception", "monitoring"],
     "license": "MIT",
-    "homepage": "http://github.com/ladamalina/yii2-rollbar",
+    "homepage": "http://github.com/accessd/yii2-rollbar",
     "authors": [
         {
-            "name": "Nadezhda Ryabtsova",
-            "email": "nadezhdaryabtsova@gmail.com"
+            "name": "Andrey Morskov",
+            "email": "accessd0@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.4",
-        "rollbar/rollbar": "~0.11.0",
+        "rollbar/rollbar": "~0.12.0",
         "yiisoft/yii2": "*"
     },
     "autoload": {
         "psr-4": {
-            "ladamalina\\yii2_rollbar\\": "src/"
+            "accessd\\yii2_rollbar\\": "src/"
         }
     }
 }

@@ -5,13 +5,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-php composer.phar require --prefer-dist ladamalina/yii2-rollbar "*"
+php composer.phar require --prefer-dist accessd/yii2-rollbar "*"
 ```
 
 or add
 
 ```json
-"ladamalina/yii2-rollbar": "*"
+"accessd/yii2-rollbar": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -19,8 +19,7 @@ to the require section of your `composer.json` file.
 ## Usage
 
 All of these blocks may be included in one config file (frontend/config/main-local.php) for 
-quite simple applications, but here I`m describing installation for real "advanced" monsters
-like our [elections platform](http://igraprestolov.vybory.tv/).
+quite simple applications.
 
 Your most global main.php file:
 
@@ -28,7 +27,7 @@ Your most global main.php file:
 'bootstrap' => ['rollbar'],
 'components' => [
     'rollbar' => [
-        'class' => 'ladamalina\yii2_rollbar\RollbarComponent',
+        'class' => 'accessd\yii2_rollbar\RollbarComponent',
         'accessToken' => 'POST_SERVER_ITEM_ACCESS_TOKEN',
     ],
 ],
@@ -50,7 +49,7 @@ web error handler (frontend/config/main-local.php for advanced app template):
 'components' => [
   'errorHandler' => [
       // handling uncaught PHP exceptions, execution and fatal errors
-      'class' => 'ladamalina\yii2_rollbar\WebErrorHandler',
+      'class' => 'accessd\yii2_rollbar\WebErrorHandler',
   ],
 ],
 ```
@@ -61,7 +60,7 @@ console error handler (console/config/main-local.php for advanced app template):
 'components' => [
   'errorHandler' => [
       // handling uncaught PHP exceptions, execution and fatal errors
-      'class' => 'ladamalina\yii2_rollbar\ConsoleErrorHandler',
+      'class' => 'accessd\yii2_rollbar\ConsoleErrorHandler',
   ],
 ],
 ```
