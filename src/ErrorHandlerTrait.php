@@ -9,7 +9,12 @@ trait ErrorHandlerTrait
      */
     public function handleException($exception)
     {
-        if (!($exception instanceof \yii\web\HttpException and $exception->statusCode == 404)) {
+        if (($exception instanceof \yii\web\HttpException and $exception->statusCode == 404) ||
+            $exception instanceof \yii\web\BadRequestHttpException ||
+            $exception instanceof \yii\web\ForbiddenHttpException ||
+            $exception instanceof \yii\web\MethodNotAllowedHttpException) {
+            // ignore errors
+        } else {
             \Rollbar::report_exception($exception);
         }
 
