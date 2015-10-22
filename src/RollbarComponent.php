@@ -44,7 +44,7 @@ class RollbarComponent extends \yii\base\Object
 	private function getPersonInfo()
 	{
 		$person_data = null;
-		if (\Yii::$app->user && !\Yii::$app->user->isGuest) {
+		if (!defined('STDIN') && \Yii::$app->user && !\Yii::$app->user->isGuest) {
 			$person_data = [
 				'id' => \Yii::$app->user->id,
 				'username' => \Yii::$app->user->identity->username,
