@@ -4,6 +4,11 @@ namespace accessd\yii2_rollbar;
 
 trait ErrorHandlerTrait
 {
+    private static function initRollbar()
+    {
+        \Yii::$app->rollbar;
+    }
+
     /**
      * Handles & reports uncaught PHP exceptions.
      */
@@ -16,6 +21,7 @@ trait ErrorHandlerTrait
             $exception instanceof \yii\web\MethodNotAllowedHttpException) {
             // ignore errors
         } else {
+            self::initRollbar();
             \Rollbar::report_exception($exception);
         }
 
@@ -27,6 +33,7 @@ trait ErrorHandlerTrait
      */
     public function handleError($code, $message, $file, $line)
     {
+        self::initRollbar();
         \Rollbar::report_php_error($code, $message, $file, $line);
 
         parent::handleError($code, $message, $file, $line);
@@ -36,6 +43,7 @@ trait ErrorHandlerTrait
      * Handles & reports fatal PHP errors that are causing the shutdown
      */
     public function handleFatalError() {
+        self::initRollbar();
         \Rollbar::report_fatal_error();
 
         parent::handleFatalError();
