@@ -4,6 +4,10 @@ namespace accessd\yii2_rollbar;
 
 trait ErrorHandlerTrait
 {
+    private static function initRollbar() {
+        \Yii::$app->rollbar;
+    }
+
     /**
      * Handles & reports uncaught PHP exceptions.
      */
